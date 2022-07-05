@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "linked-list": "deno run ./src/linked-list.js",
+    "double-linked-list": "deno run ./src/double-linked-list.js",
+  }
+}
