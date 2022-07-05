@@ -2,5 +2,9 @@
   "tasks": {
     "linked-list": "deno run ./src/linked-list.js",
     "double-linked-list": "deno run ./src/double-linked-list.js",
+    "stack": "deno run ./src/stack.js",
+    "stack-linked-list": "deno run ./src/stack-linked-list.js",
+    "queue": "deno run ./src/queue.js",
+    "queue-stack": "deno run ./src/queue-stack.js"
   }
 }
