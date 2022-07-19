@@ -5,6 +5,8 @@
     "stack": "deno run ./src/stack.js",
     "stack-linked-list": "deno run ./src/stack-linked-list.js",
     "queue": "deno run ./src/queue.js",
-    "queue-stack": "deno run ./src/queue-stack.js"
+    "queue-stack": "deno run ./src/queue-stack.js",
+    "bst": "deno run ./src/binary-tree.js",
+    "graph": "deno run ./src/graph.js"
   }
 }
