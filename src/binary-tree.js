@@ -1,4 +1,9 @@
-import { traverse } from "./utils.js";
+import {
+  traverse,
+  traverseInOrder,
+  traversePostOrder,
+  traversePreOrder,
+} from "./utils.js";
 
 class Node {
   constructor(value) {
@@ -143,6 +148,56 @@ class BinarySearchTree {
     }
   }
 
+  breadthFirstSearch() {
+    let currentNode = this.root;
+    const list = [];
+    const queue = [];
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      list.push(currentNode.value);
+
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    return list;
+  }
+
+  breadthFirstSearchR(queue, list) {
+    if (!queue.length) {
+      return list;
+    }
+
+    const currentNode = queue.shift();
+    list.push(currentNode.value);
+
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+
+    return this.breadthFirstSearchR(queue, list);
+  }
+
+  depthFirstSearchInOrder() {
+    return traverseInOrder(this.root, []);
+  }
+
+  depthFirstSearchPreOrder() {
+    return traversePreOrder(this.root, []);
+  }
+
+  depthFirstSearchPostOrder() {
+    return traversePostOrder(this.root, []);
+  }
+
   print() {
     console.log(JSON.stringify(traverse(this.root), null, 2));
   }
@@ -156,7 +211,17 @@ bst.insert(21);
 bst.insert(10);
 bst.insert(7);
 bst.insert(9);
-console.log(bst.lookup(7));
-bst.print();
-bst.remove(18);
-bst.print();
+bst.remove(7);
+bst.insert(11);
+bst.insert(17);
+
+//         15
+//    10        18
+//  9    11  17    21
+
+console.log("BFS", bst.breadthFirstSearch().toString());
+console.log("BFS R", bst.breadthFirstSearchR([bst.root], []).toString());
+
+console.log("DFS In", bst.depthFirstSearchInOrder().toString());
+console.log("DFS Pre", bst.depthFirstSearchPreOrder().toString()); // default
+console.log("DFS Post", bst.depthFirstSearchPostOrder().toString());
